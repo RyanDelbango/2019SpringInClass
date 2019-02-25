@@ -1,13 +1,14 @@
 const express = require('express');
-const conn = require('../models/mysql_connection')
+const user = require('../models/user')
+
 const app = express.Router();
 
 app.get("/", (req, res) => {
 
-    conn.query("SELECT * FROM 2019Spring_Persons", (err, data) => {
-    res.send(data)        
-    })
-
+    user.getAll((err, data) => {
+        if(err) throw err;
+        res.send(data);
+    });
 
 });
 
