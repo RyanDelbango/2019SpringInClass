@@ -12,5 +12,14 @@ app.get("/", (req, res) => {
 
 });
 
+app.post("/", (req, res) => {
+
+    user.add({ userid: "Steve", passcode: "Irwin"}, (err, data) => {
+        if(err) throw err;
+        res.send(data);
+    });
+
+});
+
 
 module.exports = app;

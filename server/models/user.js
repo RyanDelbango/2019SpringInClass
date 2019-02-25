@@ -11,8 +11,8 @@ const model = {
 
     },
     add(input, cb){
-        conn.query( "INSERT INTO 2019Spring_Persons (FirstName,LastName,Birthday,Password,created_at) VALUES (?)",
-        [[input.FirstName, input.LastName, input.Birthday, input.Password, new Date]],
+        conn.query( "INSERT INTO UserPass (userid, passcode) VALUES (?)",
+        [[input.userid, input.passcode]],
         (err, data) => {
             cb(err,data);
         }
