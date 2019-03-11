@@ -7,8 +7,8 @@ const model = {
         })
     
     },
-    get(id, cb){
-        conn.query("SELECT * FROM UserPass WHERE ID=?", id, (err, data) => {
+    get(userid, cb){
+        conn.query("SELECT * FROM UserPass WHERE userid=?", userid, (err, data) => {
             cb(err, data);  
         })
     
