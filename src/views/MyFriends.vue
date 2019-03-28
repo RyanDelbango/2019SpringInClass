@@ -2,7 +2,7 @@
 <div>
     <h1 v-if="Globals.user">{{Globals.user.name}} Friends Page</h1>
     <ul>
-        <li v-for="friend in friends" :key="friend.id">{{friends.userid}}</li>
+        <li v-for="friend in friends" :key="friend.id">{{friend.userid}}</li>
         <li>Friend2</li>
         <li>Friend3</li>
         <li>Friend4</li>
@@ -23,7 +23,8 @@ export default {
         friends: []
     }),
     async mounted(){
-        this.friends = await GetFriends
+        this.friends = await GetFriends()
+        console.log(this.friends)
     }
 }
 </script>

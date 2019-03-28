@@ -1,7 +1,8 @@
 import { api } from "./api";
 import { async } from "q";
 
-export function GetFriends(){
-     api("users")
-    .then(x=> console.log(x));
+export async function GetFriends(){
+     const  x  = await api("users")
+    console.log(x)
+    return x;
 }
