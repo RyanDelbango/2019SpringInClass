@@ -23,8 +23,8 @@ const model = {
     },
     async login(email, password){
         const data = await conn.query(`SELECT * FROM 2019Spring_Persons P
-                        Join 2019Spring_ContactMethods CM On CM.Person_Id = P.id
-                    WHERE CM.Value=?`, email);
+                        Join 2019Spring_ContactMethods CM On CM.id = P.id
+                    WHERE email=?`, email);
         if(data.length == 0){
             throw Error('User Not Found');
         }
