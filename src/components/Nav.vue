@@ -16,9 +16,6 @@
                     <li class="nav-item">
                         <router-link class="nav-link" to="/MyFriends" active-class="active">My Friends</router-link>
                     </li>
-                    <li class="nav-item">
-                        <router-link class="nav-link disabled" to="#">Disabled</router-link>
-                    </li>
                 </ul>
                 <form class="form-inline mt-2 mt-md-0" v-if="!Globals.user">
                     <a href="#" class="nav-link" @click.prevent="login">Login</a>
