@@ -13,9 +13,9 @@ export function login(){
 }
 
 export async function api(url, data){
-    let response = null
+    let response = null;
     if(!data){
-        response = await fetch(API_ROOT + url).then(x=> x.json());
+        response = await fetch(API_ROOT + url);
     }else{
         response = await fetch(API_ROOT + url, {
             method: "POST", // *GET, POST, PUT, DELETE, etc.

@@ -51,9 +51,9 @@
   <div class="col-lg-6">
     <div class="card border-success" v-if="newUser">
       <div class="card-body">
-        <h4 class="card-title">Congrats! You've Registered.</h4>
+        <h4 class="card-title">Congrats {{newUser.firstName}} {{newUser.lastName}}! You've Registered.</h4>
         <p class="card-text">
-          {{newUser.FirstName}} {{newUser.LastName}}
+          {{newUser.firstName}} {{newUser.lastName}}
         </p>
       </div>
     </div>
@@ -74,7 +74,7 @@ export default {
         async submit(){
             try {
               const m = await Register(this.data);
-              this.newUser = m
+              this.newUser= m ;
             } catch (error) {
               Globals.errors.push(error)
             }
