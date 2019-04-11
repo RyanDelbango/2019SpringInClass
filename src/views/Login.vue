@@ -64,8 +64,6 @@ export default {
             try {
               const m = await Login(this.data);
               this.newUser = m.user;
-              Globals.user = m.user;
-              Globals.token = m.token;
               toastr.success("You've logged in successfully!")
             } catch (error) {
               Globals.errors.push(error);
