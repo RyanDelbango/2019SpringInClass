@@ -64,6 +64,8 @@
 <script>
 import { Register } from "@/models/users";
 import { Globals } from "@/models/api";
+import toastr from 'toastr';
+import'toastr/build/toastr.css';
 
 export default {
     data: ()=> ({
@@ -75,8 +77,10 @@ export default {
             try {
               const m = await Register(this.data);
               this.newUser= m ;
+              toastr.success("You've registered successfully!")
             } catch (error) {
-              Globals.errors.push(error)
+              Globals.errors.push(error);
+              toastr.error(error.msg);
             }
         }
     }
