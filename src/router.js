@@ -4,10 +4,11 @@ import Home from './views/Home.vue'
 import MyFriends from "./views/MyFriends.vue";
 import Register from "./views/Register.vue";
 import Login from "./views/Login.vue";
+import {Globals} from '@/models/api'
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
@@ -41,3 +42,13 @@ export default new Router({
     }
   ]
 })
+
+router.beforeEach((to, from, next) => {
+  const publicRoutes = ['home', 'login', 'Register'];
+  if(!publicRoutes.includes(to.name) && !Globals.user){
+    return next('login');
+  }
+  next();
+})
+
+export default router;
