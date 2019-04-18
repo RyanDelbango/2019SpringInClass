@@ -32,6 +32,8 @@
                 </div>
                 <button type="submit" class="btn btn-primary">Login</button>
             </form>
+            <br>
+            <button class="btn btn-success btn-block" @click.prevent="facebookLogin">Log in with Facebook</button>
         </div>
       </div>
     </div>
@@ -52,6 +54,8 @@
 <script>
 import { Globals } from "@/models/api";
 import { Login } from "@/models/users";
+import * as fb from "@/models/facebook";
+
 import toastr from 'toastr';
 import 'toastr/build/toastr.css';
 export default {
@@ -70,6 +74,11 @@ export default {
               Globals.errors.push(error);
               toastr.error(error.message);
             }
+        },
+        async facebookLogin(){
+          const m = await fb.Login();
+          console.log( {m} );
+          Globals.user = { firstName: m.name, email: m.email}
         }
     }
 }
