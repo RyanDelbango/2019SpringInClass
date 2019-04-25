@@ -55,9 +55,8 @@
 import { Globals } from "@/models/api";
 import { Login } from "@/models/users";
 import * as fb from "@/models/facebook";
-
 import toastr from 'toastr';
-import 'toastr/build/toastr.css';
+
 export default {
     data: ()=> ({
         data: {},
@@ -77,6 +76,7 @@ export default {
         async facebookLogin(){
           const m = await fb.Login();
           console.log( {m} );
+          toastr.success("You've logged in successfully!")
         }
     }
 }
