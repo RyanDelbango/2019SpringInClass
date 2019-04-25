@@ -21,7 +21,12 @@
                     <router-link to="/Login" class="nav-link">Login</router-link>
                     <router-link to="/Register" class="nav-link">Sign Up</router-link>
                 </form>
-            <span class="navbar-text" v-if="Globals.user">Welcome {{Globals.user.firstName}} {{Globals.user.lastName}}</span>
+            <span class="navbar-text" v-if="Globals.oAuthUser">
+                <img width="30" :src="`https://graph.facebook.com/${Globals.oAuthUser.id}/picture`" />
+            </span>
+            <span class="navbar-text" v-if="Globals.user">
+                Welcome {{Globals.user.firstName}} {{Globals.user.lastName}}
+            </span>
             </div>
         </nav>
 </template>

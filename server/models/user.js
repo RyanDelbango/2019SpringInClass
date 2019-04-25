@@ -1,6 +1,7 @@
 const conn = require('./mysql_connection');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const axios = require('axios');
 
 const SALT_ROUNDS = 8;
 const JWT_SECRET = process.env.JWT_SECRET || 'some long string..';
@@ -47,6 +48,18 @@ const model = {
         }else{
             throw Error('Wrong Password');
         }
+    },
+    async facebookLogin(token){
+        const fbMe = await axios.get(`https://graph.facebook.com/me?fields=id,name,email&access_token=${token}`);
+        console.log({fbMe});
+        const data = await conn.query(`SELECT * FROM 2019Spring_Persons P
+                        Join 2019Spring_ContactMethods CM On CM.id = P.id
+                    WHERE CM.Type = 'Facebook' AND CM.Value=?`, fbMe.data.id);
+        if(data.length == 0){
+            throw Error('User Not Found');
+        }
+        const user = { ...data[0], Password: null };
+        return { user, token: jwt.sign(user, JWT_SECRET), oAuthUser: fbMe.data };
     },
     async changePassword(email, oldPassword, newPassword){
         const data = await conn.query(`SELECT * FROM 2019Spring_Persons P
