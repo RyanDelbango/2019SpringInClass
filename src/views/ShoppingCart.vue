@@ -13,7 +13,7 @@
                         <button @click="add" class="btn btn-sm btn-success">Add</button>
                     </div>
                 </li>
-                <li v-for="(item, i) in items" :key="item.name" class="list-group-item ">
+                <li v-for="(item, i) in items" :key="item.id" class="list-group-item ">
                     <div v-if="!item.isEditing" class="d-flex justify-content-between align-items-center">
                         <div class="btn-group btn-group-sm" role="group" aria-label="">
                             <button @click="item.isEditing = true" type="button" class="btn btn-primary">
@@ -28,19 +28,16 @@
                     </div>
                         <form class="form-inline d-flex justify-content-between align-items-center" v-if="item.isEditing">
                             <div class="form-group">
-                                <label for="name">Item</label>
+                                <label for="name">Item Name</label>
                                 <input type="text" v-model="item.name" id="name" class="form-control" placeholder="" aria-describedby="helpId">
-                                <small id="helpId" class="text-muted">name of item</small>
                             </div>
                             <div class="form-group">
                                 <label for="price">Price</label>
-                                <input type="text" v-model="item.pricePerItem" id="price" class="form-control" placeholder="" aria-describedby="helpId">
-                                <small id="helpId" class="text-muted">price of item</small>
+                                <input type="text" v-model="item.pricePerItem" id="price" class="form-control" placeholder="" aria-describedby="helpId" style="width:50px">
                             </div>
                             <div class="form-group">
-                                <label for="qty">Quantity</label>
-                                <input type="number" v-model="item.qty" id="qty" class="form-control" placeholder="" aria-describedby="helpId">
-                                <small id="helpId" class="text-muted">name of item</small>
+                                <label for="qty"># (Qty)</label>
+                                <input type="number" v-model="item.qty" id="qty" class="form-control" placeholder="" aria-describedby="helpId" style="width:50px">
                             </div>
                             <button @click="item.isEditing = false" class="btn btn-sm btn-primary">
                                 <i class="fa fa-subway" aria-hidden="true"></i>
@@ -73,4 +70,16 @@ export default {
 </script>
 
 <style>
+    label {
+        position: absolute;
+        font-size: small;
+        margin: -15px 5px;
+    }
+    input.form-control {
+        padding: 25px 5px;
+    }
+    .text-muted {
+        position: absolute;
+        margin: 15px 5px;
+    }
 </style>
