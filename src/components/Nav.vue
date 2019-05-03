@@ -16,6 +16,11 @@
                     <li class="nav-item">
                         <router-link class="nav-link" to="/MyFriends" active-class="active">My Friends</router-link>
                     </li>
+                    <li class="nav-item">
+                        <router-link class="nav-link" to="/Cart" active-class="active"><i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                        Cart
+                        </router-link>
+                    </li>
                 </ul>
                 <form class="form-inline mt-2 mt-md-0" v-if="!Globals.user">
                     <router-link to="/Login" class="nav-link">Login</router-link>
